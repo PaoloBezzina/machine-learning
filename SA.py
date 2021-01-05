@@ -7,18 +7,23 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import numpy as np
 
-problem = tsplib95.load('machine-learning/Instances/bays29.tsp')
+problem = tsplib95.load('machine-learning/Instances/burma14.tsp')
 
-G = problem.get_graph()
-n = list(G.edges)
+print(problem.is_depictable())
+print(problem.display_data_type)
 
 cities = []
-i = 1
-for x in n:
-    y = list(x)
-    y.insert(0, i)
-    cities.append(y)
-    i += 1
+if(problem.display_data_type == "TWOD_DISPLAY"):
+    data = problem.display_data
+else:
+    data = problem.node_coords
 
-solver.Solve(cities)
+print(len(data))
+for i in range(0, len(data)):
+    print(i+1, data[i+1][0], data[i+1][1])
+    other_list = [i+1, data[i+1][0], data[i+1][1]]
+    cities.append(other_list)
+
+
+solver.Solve(cities,epochs=10000)
 solver.PrintSolution()
