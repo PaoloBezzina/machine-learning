@@ -7,7 +7,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import numpy as np
 
-problem = tsplib95.load('machine-learning/Instances/burma14.tsp')
+problem = tsplib95.load('machine-learning/Instances/berlin52.tsp')
 
 print(problem.is_depictable())
 print(problem.display_data_type)
@@ -25,5 +25,6 @@ for i in range(0, len(data)):
     cities.append(other_list)
 
 
-solver.Solve(cities,epochs=10000)
+#solver.Solve(cities,epochs=10000)
+solver.Solve(cities, stopping_count=300)
 solver.PrintSolution()
