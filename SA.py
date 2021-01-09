@@ -1,13 +1,15 @@
 #from _future_ import division
 import tsplib95
-import acopy
+import time
 from satsp import solver
 
 import networkx as nx
 import matplotlib.pyplot as plt
 import numpy as np
 
-problem = tsplib95.load('machine-learning/Instances/berlin52.tsp')
+problem = tsplib95.load('machine-learning/Instances/ch150.tsp')
+
+start_time = time.time()
 
 print(problem.is_depictable())
 print(problem.display_data_type)
@@ -28,3 +30,7 @@ for i in range(0, len(data)):
 #solver.Solve(cities,epochs=10000)
 solver.Solve(cities, stopping_count=300)
 solver.PrintSolution()
+
+print("Time taken: %s seconds" %(time.time() - start_time))
+print("Best Tour Distance: %.6f" %solver.GetBestDist())
+print("Tour Path Taken: %s" %solver.GetBestTour())
