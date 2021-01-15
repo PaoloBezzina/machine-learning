@@ -13,7 +13,7 @@ solver = acopy.Solver(rho=.03, q=1)
 colony = acopy.Colony(alpha=1, beta=3)
 
 #load problem from file
-problem = tsplib95.load('machine-learning/Instances/ch150.tsp')
+problem = tsplib95.load('machine-learning/Instances/burma14.tsp')
 G = problem.get_graph()
 
 #calling function from library to solve TSP
