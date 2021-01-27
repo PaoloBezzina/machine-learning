@@ -4,7 +4,7 @@ import time
 from satsp import solver
 
 #load problem from file
-problem = tsplib95.load('machine-learning/Instances/burma14.tsp')
+problem = tsplib95.load('machine-learning/Instances/pr76.tsp')
 
 #set timer start time
 start_time = time.time()
@@ -23,6 +23,6 @@ for i in range(0, len(data)):
     cities.append(other_list)
 
 #calling the function to solve the tsp from the library SAtsp
-solver.Solve(cities, stopping_count=300)    #solver.Solve(cities,epochs=10000)
-solver.PrintSolution()
+solver.Solve(cities, stopping_count=300)    #solver.Solve(cities,epochs=1000)
 print("Time taken: %s seconds" %(time.time() - start_time))
+solver.PrintSolution()
